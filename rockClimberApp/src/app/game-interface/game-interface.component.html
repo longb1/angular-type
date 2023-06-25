@@ -1,4 +1,5 @@
 <div id="main-interface">
-    <app-text-screen [userInput]="receivedInput"></app-text-screen>
+    <app-text-screen [userInput]="receivedInput" [text]="typeThis"></app-text-screen>
     <app-text-input (inputChange)="sendInput($event)"></app-text-input>
+    <button (click)="triggerService()">Click me</button>
 </div>
