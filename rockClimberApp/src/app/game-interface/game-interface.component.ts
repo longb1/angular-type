@@ -19,7 +19,7 @@ export class GameInterfaceComponent {
 
   triggerService() {
     this.generateQuoteService.getRandomQuote().subscribe((quote: string) => {
-      this.typeThis = quote
+      this.typeThis = quote.split('').map((letter) => `<span class="incomplete">${letter}</span>`).join('');
     })
   }
 

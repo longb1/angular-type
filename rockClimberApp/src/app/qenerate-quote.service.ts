@@ -19,11 +19,8 @@ export class GenerateQuoteService {
   // }
 
   getRandomQuote(): Observable<string> {
-    return this.http.get(this.RANDOM_QUOTE_API_URL).pipe(
-      map((response: any) => {
-        const content = response.content;
-        return content.toString();
-      })
+    return this.http.get<{content:string}>(this.RANDOM_QUOTE_API_URL).pipe(
+      map(response => response.content)
     );
   }
 }
