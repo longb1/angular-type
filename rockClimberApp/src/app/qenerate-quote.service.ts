@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +10,20 @@ export class GenerateQuoteService {
 
   constructor(private http: HttpClient) { }
 
-  getRandomQuote(): Promise<string> {
-    return this.http.get<{ content: string }>(this.RANDOM_QUOTE_API_URL)
-      .toPromise()
-      .then(response => response.content)
-      .catch(error => {
-        console.error('Error occurred while fetching random quote:', error);
-        throw error;
-      });
+  // getRandomQuote() {
+  //   this.http.get(this.RANDOM_QUOTE_API_URL).subscribe((response: any) => {
+  //     const content = response.content; // Extract the 'content' property from the response
+  //     // Use the 'content' variable as needed
+  //     return content.toString()
+  //   });
+  // }
+
+  getRandomQuote(): Observable<string> {
+    return this.http.get(this.RANDOM_QUOTE_API_URL).pipe(
+      map((response: any) => {
+        const content = response.content;
+        return content.toString();
+      })
+    );
   }
 }

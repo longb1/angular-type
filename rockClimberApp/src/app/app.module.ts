@@ -8,6 +8,7 @@ import { TextScreenComponent } from './game-interface/text-screen/text-screen.co
 import { TextInputComponent } from './game-interface/text-input/text-input.component';
 import { GameInterfaceComponent } from './game-interface/game-interface.component';
 import { MainInterfaceComponent } from './main-interface/main-interface.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MainInterfaceComponent } from './main-interface/main-interface.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
