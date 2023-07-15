@@ -4,7 +4,7 @@ import { Component, Input,ViewChildren,QueryList,ElementRef, OnChanges } from '@
   template: `
   <div class="textScreen" #textScreen>
     <ng-container *ngFor="let char of textArray">
-        <span [class]="isComplete">{{ char }}</span>
+        <span #spanChar [class]="isComplete">{{ char }}</span>
     </ng-container>
   </div>
   `,
@@ -20,7 +20,7 @@ export class TextScreenComponent implements OnChanges {
 
   @Input() userInput!: string;
   @Input() textArray?:string[];
-  @ViewChildren('spans') allTexts?: QueryList<ElementRef>;
+  @ViewChildren('spanChar') allTexts?: QueryList<ElementRef>;
   
   public isComplete = "";
 
@@ -29,6 +29,7 @@ export class TextScreenComponent implements OnChanges {
   }
   
   highlightMatchedChars() {
+    console.log(this.allTexts)
 
     if (this.allTexts && this.allTexts.length > 0) {
 
@@ -38,7 +39,7 @@ export class TextScreenComponent implements OnChanges {
       //get character from allTexts and store in array
       this.allTexts.forEach((textChar, index)=>{
         const inputChar = userChar[index]
-        console.log("hello")
+
         if(inputChar==null){
           this.isComplete="" //no style
         } else if(inputChar===textChar.nativeElement.innerText){
@@ -46,6 +47,7 @@ export class TextScreenComponent implements OnChanges {
         }else{
           this.isComplete="no"
         }
+
       })
 
     }
