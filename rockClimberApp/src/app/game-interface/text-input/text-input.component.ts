@@ -2,8 +2,10 @@ import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-text-input',
-  templateUrl: './text-input.component.html',
-  styleUrls: ['./text-input.component.scss']
+  template: `
+    <input type="text" [(ngModel)]="inputText" (input)="onInputChange()">
+  `,
+  styles: []
 })
 export class TextInputComponent{
   inputText!: string;
