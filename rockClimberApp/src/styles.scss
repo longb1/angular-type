@@ -8,10 +8,14 @@ body{
     // width: 100%;
 }
 
-.yes{
+.correct{
     color: green;
 }
 
-.no{
+.incorrect{
     color: red;
+}
+
+.incomplete{
+    color:black;
 }

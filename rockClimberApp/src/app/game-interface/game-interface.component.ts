@@ -9,12 +9,12 @@ import { GenerateQuoteService } from 'src/app/qenerate-quote.service';
 export class GameInterfaceComponent {
   constructor(private generateQuoteService : GenerateQuoteService) { }
 
-  receivedInput!: string;
+  receivedInput!: string[];
   typeThis!:string[];
 
   sendInput(text: string) {
 
-    this.receivedInput = text;
+    this.receivedInput = text.split('');
   }
 
   triggerService() {
