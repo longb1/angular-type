@@ -25,7 +25,7 @@ import { Component, Input,ViewChildren,QueryList,ElementRef, OnChanges } from '@
 })
 export class TextScreenComponent{
 
-  @Input() userInput!: string;
+  @Input() userInput!: string[];
   @Input() textArray?:string[];
 
 }
