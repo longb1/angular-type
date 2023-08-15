@@ -9,8 +9,8 @@ import { GenerateQuoteService } from 'src/app/qenerate-quote.service';
 export class GameInterfaceComponent {
   constructor(private generateQuoteService : GenerateQuoteService) { }
 
-  receivedInput!: string[];
-  typeThis!:string[];
+  receivedInput: string[] = [];
+  typeThis:string[] = [];
 
   sendInput(text: string) {
 

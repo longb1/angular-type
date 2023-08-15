@@ -1,4 +1,4 @@
-import { Component, Input,ViewChildren,QueryList,ElementRef, OnChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-text-screen',
   template: `
@@ -7,7 +7,7 @@ import { Component, Input,ViewChildren,QueryList,ElementRef, OnChanges } from '@
     <span
       *ngFor="let char of textArray; let index = index"
       [class.incomplete]="!userInput[index]"
-      [class.incorrect]="userInput[index] !== char"
+      [class.incorrect]="userInput[index] && userInput[index] !== char"
       [class.correct]="userInput[index] === char"
     >
       {{ char }}
