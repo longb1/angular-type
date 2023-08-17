@@ -10,7 +10,6 @@ import { Component, Input } from '@angular/core';
       [class.correct]="userInput[index] === char"
     >{{char}}</span>
   </div>
-
   `,
   styles: [ `
     .textScreen {
