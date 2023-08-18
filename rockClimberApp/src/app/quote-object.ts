@@ -1,4 +1,4 @@
-export interface quoteObject{
+export interface IQuoteObject{
     charArray: string[],
     wordArray: string[],
     indexProgress: number,
