@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { CompareService } from 'src/app/compare.service';
 
 @Component({
   selector: 'app-text-input',
@@ -8,7 +9,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styles: []
 })
 export class TextInputComponent{
-
+  constructor(private CompareService: CompareService) { }
   inputText!: string;
   @Output() inputChange = new EventEmitter<string>();
 
