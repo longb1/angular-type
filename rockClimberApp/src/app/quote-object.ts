@@ -1,6 +1,5 @@
 export interface IQuoteObject{
-    charArray: string[],
-    wordArray: string[],
+    quote: string,
     indexProgress: number,
     userProgress: string
 }

@@ -12,8 +12,7 @@ export class GameInterfaceComponent {
 
   receivedInput: string[] = [];
   quoteObject: IQuoteObject = {
-    charArray: [],
-    wordArray: [],
+    quote: '',
     indexProgress: 0,
     userProgress: ''
   };
@@ -28,8 +27,7 @@ export class GameInterfaceComponent {
       const quoteObject:IQuoteObject = {
         indexProgress: 0,
         userProgress: '',
-        charArray: quote.split(''),
-        wordArray: quote.split(' ')
+        quote: quote
       };
   
       this.quoteObject = quoteObject;

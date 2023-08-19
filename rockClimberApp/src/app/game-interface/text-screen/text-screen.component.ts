@@ -3,13 +3,12 @@ import { IQuoteObject } from 'src/app/quote-object';
 @Component({
   selector: 'app-text-screen',
   template: `
+
   <div class="textScreen" #textScreen>
     <span
-      *ngFor="let char of quoteObject?.charArray; let index = index"
-      [class.incomplete]="!userInput[index]"
-      [class.incorrect]="userInput[index] && userInput[index] !== char"
-      [class.correct]="userInput[index] === char"
-    >{{char}}</span>
+      *ngFor="let char of quoteObject?.quote?.split(''); let index = index"
+      [ngClass]="applyClassLogic(index, char)"
+    >{{ char }}</span>
   </div>
   `,
   styles: [ `
@@ -25,4 +24,15 @@ export class TextScreenComponent{
   @Input() userInput!: string[];
   @Input() quoteObject?:IQuoteObject;
 
+
+  applyClassLogic(index: number, char: string): string{
+    if (!this.userInput[index]) {
+      return 'incomplete';
+    } else if (this.userInput[index] && this.userInput[index] !== char) {
+      return 'incorrect';
+    } else if (this.userInput[index] === char) {
+      return 'correct';
+    }
+    return 'poo'
+  }
 }
