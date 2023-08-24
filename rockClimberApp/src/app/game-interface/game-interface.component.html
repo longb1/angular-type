@@ -1,5 +1,5 @@
 <div id="main-interface">
     <app-text-screen [userInput]="receivedInput" [quoteObject]="quoteObject"></app-text-screen>
-    <app-text-input (inputChange)="sendInput($event)"></app-text-input>
+    <app-text-input (inputChange)="sendInput($event)" [quoteObject]="quoteObject"></app-text-input>
     <button (click)="getQuote()">Get Quote</button>
 </div>

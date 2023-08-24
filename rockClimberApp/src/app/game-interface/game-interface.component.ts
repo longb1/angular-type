@@ -13,8 +13,7 @@ export class GameInterfaceComponent {
   receivedInput: string[] = [];
   quoteObject: IQuoteObject = {
     quote: '',
-    indexProgress: 0,
-    userProgress: ''
+    completed: ''
   };
 
   sendInput(text: string) {
@@ -25,8 +24,7 @@ export class GameInterfaceComponent {
     this.generateQuoteService.getRandomQuote().subscribe((quote: string) => {
 
       const quoteObject:IQuoteObject = {
-        indexProgress: 0,
-        userProgress: '',
+        completed: '',
         quote: quote
       };
   
