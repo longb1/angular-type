@@ -13,17 +13,21 @@ export class CompareService {
     const finalWord = wordArray[wordArray.length - 1];
 
     if(usersWord == currentWord && usersWord != finalWord){
+
       quoteObject.completed+=usersWord + ' '
-      
-      //remove completed word from quote
       wordArray.shift()
-      //set new quote
       quoteObject.quote = wordArray.join(' ')
 
       return 1;
     }else if (usersWord == finalWord){
       quoteObject.completed+=usersWord
       console.log('complete!')
+      //make sure word doesn't submit more than once
+      //call another service for complete?
+
+      //calculate points
+      //launch screen to play again/exit to home.
+
       return 1;
     }
 
