@@ -1,5 +1,6 @@
 <div id="main-interface">
+    <div> {{time.toISOString()}} </div>
     <app-text-screen [userInput]="receivedInput" [quoteObject]="quoteObject"></app-text-screen>
     <app-text-input (inputChange)="sendInput($event)" [quoteObject]="quoteObject"></app-text-input>
-    <button (click)="getQuote()">Get Quote</button>
+    <button (click)="startGame()">Get Quote</button>
 </div>
