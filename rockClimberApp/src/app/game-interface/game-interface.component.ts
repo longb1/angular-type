@@ -21,6 +21,8 @@ export class GameInterfaceComponent {
     quote: '',
     completed: ''
   };
+  gameStarted = false;
+
 
   interval: any;
   time = new Date();
@@ -30,6 +32,17 @@ export class GameInterfaceComponent {
   }
 
   startGame() {
+    this.gameStarted = true;
+    this.countDown()
+    this.generateQuote()
+    this.startTimer()
+    //then, start stop watch and interval only once before blanking out button
+
+
+    //when last word complete, put button back, stop timer, stop interval, record time - if auth'd , add ot account
+  }
+
+  generateQuote(){
     this.generateQuoteService.getRandomQuote().subscribe((quote: string) => {
 
       const quoteObject:IQuoteObject = {
@@ -39,15 +52,17 @@ export class GameInterfaceComponent {
   
       this.quoteObject = quoteObject;
     })
+  }
 
-    //integrate count down before starting game
-    //then, start stop watch and interval only once before blanking out button
+  countDown(){
+    //start counting
+  }
+
+  startTimer(){
     this.StopwatchService.start()
     this.interval=setInterval(() => {
       this.time.setSeconds(this.time.getSeconds()+1);
     }, 1000);
-
-    //when last word complete, put button back, stop timer, stop interval, record time - if auth'd , add ot account
   }
 
 }

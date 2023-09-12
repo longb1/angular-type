@@ -2,5 +2,9 @@
     <div> {{time.toISOString()}} </div>
     <app-text-screen [userInput]="receivedInput" [quoteObject]="quoteObject"></app-text-screen>
     <app-text-input (inputChange)="sendInput($event)" [quoteObject]="quoteObject"></app-text-input>
-    <button (click)="startGame()">Get Quote</button>
+    <div *ngIf="!gameStarted"> 
+        <button (click)="startGame()">Start Game</button>
+    </div>
+    
 </div>
+<!-- && !progress.complete -->
