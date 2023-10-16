@@ -1,5 +1,5 @@
 <div id="main-interface">
-    <div> {{time.toISOString()}} </div>
+    <div> {{time.toISOString().substr(11,8) }} </div>
     <app-text-screen [userInput]="receivedInput" [quoteObject]="quoteObject"></app-text-screen>
     <app-text-input (inputChange)="sendInput($event)" [quoteObject]="quoteObject"></app-text-input>
     <div *ngIf="!gameStarted"> 

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { GenerateQuoteService } from 'src/app/qenerate-quote.service';
 import { IQuoteObject } from '../quote-object';
 import { StopwatchService } from 'src/app/stopwatch.service';
-import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -21,11 +20,10 @@ export class GameInterfaceComponent {
     quote: '',
     completed: ''
   };
+
   gameStarted = false;
-
-
   interval: any;
-  time = new Date();
+  time = new Date(0);
 
   sendInput(text: string) {
     this.receivedInput = text.split('');
@@ -37,6 +35,7 @@ export class GameInterfaceComponent {
     this.generateQuote()
     this.startTimer()
     //then, start stop watch and interval only once before blanking out button
+    
 
 
     //when last word complete, put button back, stop timer, stop interval, record time - if auth'd , add ot account
@@ -56,10 +55,12 @@ export class GameInterfaceComponent {
 
   countDown(){
     //start counting
+    console.log("counting")
   }
 
   startTimer(){
     this.StopwatchService.start()
+
     this.interval=setInterval(() => {
       this.time.setSeconds(this.time.getSeconds()+1);
     }, 1000);
