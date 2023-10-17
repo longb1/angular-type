@@ -1,10 +1,24 @@
 <div id="main-interface">
-    <div> {{time.toISOString().substr(11,8) }} </div>
-    <app-text-screen [userInput]="receivedInput" [quoteObject]="quoteObject"></app-text-screen>
-    <app-text-input (inputChange)="sendInput($event)" [quoteObject]="quoteObject"></app-text-input>
+    <div> {{time.toLocaleTimeString("en-GB", {
+        minute: "2-digit",
+        second: "2-digit",
+      })}} </div>
+    
+      <app-text-screen 
+      [userInput]="receivedInput" 
+      [quoteObject]="quoteObject"
+      ></app-text-screen>
+    
+      <app-text-input 
+      (inputChange)="sendInput($event)" 
+      [quoteObject]="quoteObject" 
+      [fieldDisabled]="isCountdownActive"
+      ></app-text-input>
+      <div *ngIf="isCountdownActive">
+        Countdown: {{ countDownSeconds }} seconds
+      </div>
     <div *ngIf="!gameStarted"> 
         <button (click)="startGame()">Start Game</button>
     </div>
     
 </div>
-<!-- && !progress.complete -->

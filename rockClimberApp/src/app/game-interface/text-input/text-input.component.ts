@@ -4,7 +4,13 @@ import { IQuoteObject } from 'src/app/quote-object';
 @Component({
   selector: 'app-text-input',
   template: `
-    <input type="text" [(ngModel)]="inputText" (input)="emitUserInput()" (keypress)="compareInput($event)">
+    <input 
+      type="text" 
+      [(ngModel)]="inputText" 
+      (input)="emitUserInput()" 
+      (keypress)="compareInput($event)"
+      [disabled]="fieldDisabled"
+    >
   `,
   styles: []
 })
@@ -14,6 +20,7 @@ export class TextInputComponent{
   inputText!: string;
   @Output() inputChange = new EventEmitter<string>();
   @Input() quoteObject!:IQuoteObject;
+  @Input() fieldDisabled!: boolean;
 
   emitUserInput() {
     this.inputChange.emit(this.inputText);

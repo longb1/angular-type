@@ -20,10 +20,12 @@ export class GameInterfaceComponent {
     quote: '',
     completed: ''
   };
+  isCountdownActive = false;
 
   gameStarted = false;
   interval: any;
   time = new Date(0);
+  countDownSeconds = 5;
 
   sendInput(text: string) {
     this.receivedInput = text.split('');
@@ -31,16 +33,21 @@ export class GameInterfaceComponent {
 
   startGame() {
     this.gameStarted = true;
-    this.countDown()
     this.generateQuote()
+    this.countDown()
     this.startTimer()
     //then, start stop watch and interval only once before blanking out button
-    
-
 
     //when last word complete, put button back, stop timer, stop interval, record time - if auth'd , add ot account
   }
 
+
+  countDown(){
+    this.isCountdownActive = true;
+    setTimeout(() => {
+      this.isCountdownActive = false;
+    }, this.countDownSeconds * 1000);
+  }
   generateQuote(){
     this.generateQuoteService.getRandomQuote().subscribe((quote: string) => {
 
@@ -51,11 +58,6 @@ export class GameInterfaceComponent {
   
       this.quoteObject = quoteObject;
     })
-  }
-
-  countDown(){
-    //start counting
-    console.log("counting")
   }
 
   startTimer(){
