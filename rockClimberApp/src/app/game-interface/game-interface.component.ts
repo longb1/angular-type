@@ -21,11 +21,10 @@ export class GameInterfaceComponent {
     completed: ''
   };
   isCountdownActive = false;
+  countDownSeconds = 5;
 
   gameStarted = false;
-  interval: any;
   time = new Date(0);
-  countDownSeconds = 5;
 
   sendInput(text: string) {
     this.receivedInput = text.split('');
@@ -44,9 +43,15 @@ export class GameInterfaceComponent {
 
   countDown(){
     this.isCountdownActive = true;
-    setTimeout(() => {
-      this.isCountdownActive = false;
-    }, this.countDownSeconds * 1000);
+
+    const gameCountdown = setInterval(() => {
+      this.countDownSeconds--;
+      if (this.countDownSeconds <= 0) {
+        this.isCountdownActive = false;
+        clearInterval( gameCountdown);
+      }
+    }, 1000);
+
   }
   generateQuote(){
     this.generateQuoteService.getRandomQuote().subscribe((quote: string) => {
@@ -63,7 +68,7 @@ export class GameInterfaceComponent {
   startTimer(){
     this.StopwatchService.start()
 
-    this.interval=setInterval(() => {
+    const interval=setInterval(() => {
       this.time.setSeconds(this.time.getSeconds()+1);
     }, 1000);
   }
