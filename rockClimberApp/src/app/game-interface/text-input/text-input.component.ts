@@ -33,6 +33,10 @@ export class TextInputComponent{
         this.inputText = '';
       }
     }
+
+    if(this.quoteObject.quote == this.quoteObject.completed){
+      console.log('game complete')
+    }
   }
 
 }
