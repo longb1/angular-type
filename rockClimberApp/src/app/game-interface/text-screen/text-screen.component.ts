@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IQuoteObject } from 'src/app/quote-object';
-import { StopwatchService } from 'src/app/stopwatch.service';
+
 @Component({
   selector: 'app-text-screen',
   template: `
@@ -28,7 +28,6 @@ export class TextScreenComponent{
 
   @Input() userInput!: string[];
   @Input() quoteObject?:IQuoteObject;
-  constructor(private StopwatchService : StopwatchService) { }
 
   getProcessedCharacters(): string[] {
     if (this.quoteObject?.quote) {

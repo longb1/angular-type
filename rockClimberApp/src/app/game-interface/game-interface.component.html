@@ -4,19 +4,21 @@
         second: "2-digit",
       })}} </div>
     
-      <app-text-screen 
+    <app-text-screen 
       [userInput]="receivedInput" 
       [quoteObject]="quoteObject"
-      ></app-text-screen>
+    ></app-text-screen>
     
-      <app-text-input 
+    <app-text-input 
       (inputChange)="sendInput($event)" 
       [quoteObject]="quoteObject" 
       [fieldDisabled]="isCountdownActive"
-      ></app-text-input>
-      <div *ngIf="isCountdownActive">
-        Countdown: {{ countDownSeconds }} seconds
-      </div>
+    ></app-text-input>
+
+    <div *ngIf="isCountdownActive">
+      Countdown: {{ countDownSeconds }} seconds
+    </div>
+
     <div *ngIf="!gameStarted"> 
         <button (click)="startGame()">Start Game</button>
     </div>
