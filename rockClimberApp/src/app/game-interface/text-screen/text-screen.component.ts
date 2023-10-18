@@ -12,7 +12,7 @@ import { IQuoteObject } from 'src/app/quote-object';
     >{{ char }}</span>
     <span
       *ngFor="let char of quoteObject?.quote?.split(''); let index = index"
-      [ngClass]="applyClassLogic(index, char)"
+      [ngClass]="highlightCharacter(index, char)"
     >{{ char }}</span>
   </div>
   `,
@@ -36,7 +36,7 @@ export class TextScreenComponent{
     return [];
   }
 
-  applyClassLogic(index: number, char: string): string{
+  highlightCharacter(index: number, char: string): string{
     if (!this.userInput[index]) {
       return 'incomplete';
     } else if (this.userInput[index] && this.userInput[index] !== char) {
