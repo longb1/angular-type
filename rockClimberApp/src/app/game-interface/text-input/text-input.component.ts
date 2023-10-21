@@ -22,20 +22,22 @@ export class TextInputComponent{
   @Input() quoteObject!:IQuoteObject;
   @Input() fieldDisabled!: boolean;
 
+
+  @Output() gameComplete: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   emitUserInput() {
     this.inputChange.emit(this.inputText);
   }
 
   compareInput(event: KeyboardEvent) {
+
     if (event.key === ' ') {
       event.preventDefault();
       if (this.compareService.compare(this.quoteObject, this.inputText) == 1){
         this.inputText = '';
+      }else if (this.compareService.compare(this.quoteObject, this.inputText) == 2){
+        this.gameComplete.emit(true);
       }
-    }
-
-    if(this.quoteObject.quote == this.quoteObject.completed){
-      console.log('game complete')
     }
   }
 

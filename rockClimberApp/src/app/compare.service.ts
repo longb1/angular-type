@@ -28,7 +28,7 @@ export class CompareService {
       //calculate points
       //launch screen to play again/exit to home.
 
-      return 1;
+      return 2;
     }
 
     return 0;

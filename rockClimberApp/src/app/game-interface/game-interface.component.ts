@@ -53,6 +53,7 @@ export class GameInterfaceComponent {
     }, 1000);
 
   }
+  
   generateQuote(){
     this.generateQuoteService.getRandomQuote().subscribe((quote: string) => {
 
