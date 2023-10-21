@@ -29,13 +29,6 @@ export class TextScreenComponent{
   @Input() userInput!: string[];
   @Input() quoteObject?:IQuoteObject;
 
-  getProcessedCharacters(): string[] {
-    if (this.quoteObject?.quote) {
-      return this.quoteObject.completed.split('');
-    }
-    return [];
-  }
-
   highlightCharacter(index: number, char: string): string{
     if (!this.userInput[index]) {
       return 'incomplete';
