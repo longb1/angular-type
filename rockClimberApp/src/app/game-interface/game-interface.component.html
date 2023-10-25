@@ -1,25 +1,26 @@
 <div id="main-interface">
-    <div> {{time.toLocaleTimeString("en-GB", {
+    <div> {{GameControllerService.time.toLocaleTimeString("en-GB", {
         minute: "2-digit",
         second: "2-digit",
       })}} </div>
     
     <app-text-screen 
-      [userInput]="receivedInput" 
-      [quoteObject]="quoteObject"
+      [userInput]="receivedInput"
+      [quoteObject]="GameControllerService.quoteObject"
     ></app-text-screen>
     
     <app-text-input 
-      (inputChange)="sendInput($event)" 
-      [quoteObject]="quoteObject" 
-      [fieldDisabled]="isCountdownActive"
+      (inputChange)="sendToDisplay($event)" 
+      [quoteObject]="GameControllerService.quoteObject"
+      [fieldDisabled]="GameControllerService.isCountdownActive"
+      (gameComplete)="finish()"
     ></app-text-input>
 
-    <div *ngIf="isCountdownActive">
-      Countdown: {{ countDownSeconds }} seconds
+    <div *ngIf="GameControllerService.isCountdownActive">
+      Countdown: {{ GameControllerService.countDownSeconds }} seconds
     </div>
 
-    <div *ngIf="!gameStarted"> 
+    <div *ngIf="!GameControllerService.gameInProgress"> 
         <button (click)="startGame()">Start Game</button>
     </div>
     

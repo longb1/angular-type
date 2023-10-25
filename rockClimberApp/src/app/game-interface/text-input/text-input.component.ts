@@ -23,7 +23,7 @@ export class TextInputComponent{
   @Input() fieldDisabled!: boolean;
 
 
-  @Output() gameComplete: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() gameComplete = new EventEmitter();
 
   emitUserInput() {
     this.inputChange.emit(this.inputText);
