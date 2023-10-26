@@ -11,10 +11,9 @@ export class GameControllerService {
 
   constructor(
     private generateQuoteService : GenerateQuoteService,
-    private StopwatchService : StopwatchService
+    public StopwatchService : StopwatchService
     ) { }
 
-  receivedInput: string[] = [];
 
   quoteObject: IQuoteObject = {
     quote: '',
@@ -25,11 +24,7 @@ export class GameControllerService {
   countDownSeconds = 5;
   gameInProgress = false;
   time = new Date(0);
-
-  sendToDisplay(text: string) {
-    this.receivedInput = text.split('');
-  }
-
+  private timerInterval: any;
   startGame() {
     this.gameInProgress = true;
     this.generateQuote()
@@ -68,7 +63,7 @@ export class GameControllerService {
   startTimer(){
     this.StopwatchService.start()
 
-    const interval=setInterval(() => {
+    this.timerInterval =setInterval(() => {
       this.time.setSeconds(this.time.getSeconds()+1);
     }, 1000);
   }
@@ -76,6 +71,12 @@ export class GameControllerService {
   stopGame(){
     this.gameInProgress = false;
     this.StopwatchService.stop()
+
+
+    // Clear the interval to stop the timer
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+    }
   }
 
   resetGame(){

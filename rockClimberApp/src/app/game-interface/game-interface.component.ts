@@ -18,11 +18,15 @@ export class GameInterfaceComponent {
   }
 
   startGame() {
+    this.GameControllerService.resetGame()
     this.GameControllerService.startGame()
   }
+
+
 
   finish(){
     this.GameControllerService.stopGame()
   }
+
 
 }

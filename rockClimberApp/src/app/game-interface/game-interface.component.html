@@ -22,6 +22,7 @@
 
     <div *ngIf="!GameControllerService.gameInProgress"> 
         <button (click)="startGame()">Start Game</button>
+        your record: {{ GameControllerService.StopwatchService.getTimeElapsed() }}
     </div>
     
 </div>
