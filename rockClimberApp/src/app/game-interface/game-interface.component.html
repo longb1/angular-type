@@ -1,8 +1,5 @@
 <div id="main-interface">
-    <div> {{GameControllerService.time.toLocaleTimeString("en-GB", {
-        minute: "2-digit",
-        second: "2-digit",
-      })}} </div>
+    <div> {{timerValue}} </div>
     
     <app-text-screen 
       [userInput]="receivedInput"
@@ -22,7 +19,6 @@
 
     <div *ngIf="!GameControllerService.gameInProgress"> 
         <button (click)="startGame()">Start Game</button>
-        your record: {{ GameControllerService.StopwatchService.getTimeElapsed() }}
     </div>
     
 </div>

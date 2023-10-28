@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { GenerateQuoteService } from 'src/app/qenerate-quote.service';
 import { IQuoteObject } from './quote-object';
 import { StopwatchService } from 'src/app/stopwatch.service';
@@ -7,13 +7,12 @@ import { StopwatchService } from 'src/app/stopwatch.service';
 @Injectable({
   providedIn: 'root'
 })
-export class GameControllerService {
+export class GameControllerService{
 
   constructor(
     private generateQuoteService : GenerateQuoteService,
     public StopwatchService : StopwatchService
     ) { }
-
 
   quoteObject: IQuoteObject = {
     quote: '',
@@ -23,8 +22,7 @@ export class GameControllerService {
   isCountdownActive = false;
   countDownSeconds = 5;
   gameInProgress = false;
-  time = new Date(0);
-  private timerInterval: any;
+
   startGame() {
     this.gameInProgress = true;
     this.generateQuote()
@@ -40,7 +38,7 @@ export class GameControllerService {
       this.countDownSeconds--;
       if (this.countDownSeconds <= 0) {
         this.isCountdownActive = false;
-        this.startTimer()
+        this.StopwatchService.start();
         clearInterval(gameCountdown);
 
       }
@@ -60,27 +58,13 @@ export class GameControllerService {
     })
   }
 
-  startTimer(){
-    this.StopwatchService.start()
-
-    this.timerInterval =setInterval(() => {
-      this.time.setSeconds(this.time.getSeconds()+1);
-    }, 1000);
-  }
-
   stopGame(){
     this.gameInProgress = false;
     this.StopwatchService.stop()
-
-
-    // Clear the interval to stop the timer
-    if (this.timerInterval) {
-      clearInterval(this.timerInterval);
-    }
   }
 
   resetGame(){
-    this.time = new Date(0);
+    console.log("reset timer now")
   }
 
 }
