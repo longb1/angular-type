@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 export class StopwatchService {
   private startTime: number | undefined;
   private timerSubject: Subject<string> = new Subject<string>();
+  private myInterval: any;
 
   start() {
     this.startTime = new Date().getTime();
@@ -16,7 +17,7 @@ export class StopwatchService {
   stop() {
     const endTime = new Date().getTime();
     const timeElapsed = this.calculateTimeElapsed(endTime);
-    this.timerSubject.next(timeElapsed);
+    clearInterval(this.myInterval);
   }
 
   getTimer(): Subject<string> {
@@ -24,7 +25,7 @@ export class StopwatchService {
   }
 
   private updateTimer() {
-    setInterval(() => {
+    this.myInterval  = setInterval(() => {
       if (this.startTime) {
         const currentTime = new Date().getTime();
         const timeElapsed = this.calculateTimeElapsed(currentTime);
