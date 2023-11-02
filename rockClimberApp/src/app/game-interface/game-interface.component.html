@@ -20,5 +20,9 @@
     <div *ngIf="!GameControllerService.gameInProgress"> 
         <button (click)="startGame()">Start Game</button>
     </div>
+
+    <div *ngIf="GameControllerService.wpmScore"> 
+      <p>your WPM is {{GameControllerService.wpmScore}}</p>
+  </div>
     
 </div>

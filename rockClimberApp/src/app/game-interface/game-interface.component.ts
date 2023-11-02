@@ -14,6 +14,7 @@ export class GameInterfaceComponent {
     ) { }
   timerValue = '0:00';
   receivedInput: string[] = [];
+  
   ngOnInit() {
     this.StopwatchService.getTimer().subscribe(time => {
       this.timerValue = time;
@@ -24,14 +25,11 @@ export class GameInterfaceComponent {
   }
 
   startGame() {
-    this.GameControllerService.resetGame()
     this.GameControllerService.startGame()
   }
 
-
-
   finish(){
-    this.GameControllerService.stopGame()
+    this.GameControllerService.completeGame()
   }
 
 
