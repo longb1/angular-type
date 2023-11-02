@@ -17,12 +17,12 @@ import { IQuoteObject } from 'src/app/quote-object';
 export class TextInputComponent{
   constructor(private compareService: CompareService) { }
 
-  inputText!: string;
-  @Output() inputChange = new EventEmitter<string>();
+  public inputText!: string;
+  public done = false;
+
   @Input() quoteObject!:IQuoteObject;
   @Input() fieldDisabled!: boolean;
-
-
+  @Output() inputChange = new EventEmitter<string>();
   @Output() gameComplete = new EventEmitter();
 
   emitUserInput() {
@@ -33,11 +33,14 @@ export class TextInputComponent{
 
     if (event.key === ' ') {
       event.preventDefault();
-      if (this.compareService.compare(this.quoteObject, this.inputText) == 1){
-        this.inputText = '';
-      }else if (this.compareService.compare(this.quoteObject, this.inputText) == 2){
+
+      const isComplete = this.compareService.compare(this.quoteObject, this.inputText)
+      this.done = isComplete
+      this.inputText = '';
+      if(isComplete){
         this.gameComplete.emit(true);
       }
+      console.log(this.done)
     }
   }
 
