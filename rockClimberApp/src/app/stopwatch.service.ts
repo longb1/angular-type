@@ -11,7 +11,6 @@ export class StopwatchService {
 
   start() {
     this.startTime = new Date().getTime();
-    // this.timerSubject = new Subject<string>();
     this.updateTimer();
   }
 
