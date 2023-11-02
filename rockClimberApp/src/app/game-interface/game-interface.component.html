@@ -9,7 +9,7 @@
     <app-text-input 
       (inputChange)="sendToDisplay($event)" 
       [quoteObject]="GameControllerService.quoteObject"
-      [fieldDisabled]="GameControllerService.isCountdownActive || !GameControllerService.gameInProgress"
+      [fieldDisabled]="!GameControllerService.gameInProgress"
       (gameComplete)="finish()"
     ></app-text-input>
 

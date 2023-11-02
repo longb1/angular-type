@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { GenerateQuoteService } from 'src/app/qenerate-quote.service';
 import { IQuoteObject } from './quote-object';
 import { StopwatchService } from 'src/app/stopwatch.service';
@@ -18,8 +18,9 @@ export class GameControllerService{
     quote: '',
     completed: ''
   };
-
-  public isCountdownActive = false;
+  
+  public timerValue = '0:00';
+  public isCountdownActive = false; //used to display countdown
   public countDownSeconds = 5;
   public gameInProgress = false;
   public wpmScore!: number | null;
@@ -27,10 +28,9 @@ export class GameControllerService{
   startGame() {
     this.countDownSeconds = 5;
     this.wpmScore = null;
-    this.gameInProgress = true;
+    
     this.generateQuote()
     this.countDown()
-    //when last word complete, put button back, stop timer, stop interval, record time - if auth'd , add ot account
   }
 
 
@@ -41,6 +41,9 @@ export class GameControllerService{
       this.countDownSeconds--;
       if (this.countDownSeconds <= 0) {
         this.isCountdownActive = false;
+
+        this.gameInProgress = true;
+
         this.StopwatchService.start();
         clearInterval(gameCountdown);
 
@@ -72,10 +75,6 @@ export class GameControllerService{
     this.wpmScore = (allLetters / 5)/timeInMinutes;
         
 
-  }
-
-  resetGame(){
-    console.log("reset timer now")
   }
 
 }
