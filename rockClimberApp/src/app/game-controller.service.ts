@@ -14,16 +14,19 @@ export class GameControllerService{
     public StopwatchService : StopwatchService
     ) { }
 
-  quoteObject: IQuoteObject = {
+  public quoteObject: IQuoteObject = {
     quote: '',
     completed: ''
   };
 
-  isCountdownActive = false;
-  countDownSeconds = 5;
-  gameInProgress = false;
+  public isCountdownActive = false;
+  public countDownSeconds = 5;
+  public gameInProgress = false;
+  public wpmScore!: number | null;
 
   startGame() {
+    this.countDownSeconds = 5;
+    this.wpmScore = null;
     this.gameInProgress = true;
     this.generateQuote()
     this.countDown()
@@ -58,9 +61,17 @@ export class GameControllerService{
     })
   }
 
-  stopGame(){
+  completeGame(){
     this.gameInProgress = false;
     this.StopwatchService.stop()
+
+    //WPM logic (extract into service soon)
+    const allLetters = this.quoteObject.completed.split("").length;
+    const finishTimeMilliSecs= this.StopwatchService.getFinishTime()
+    const timeInMinutes: number = finishTimeMilliSecs / 60000; // 1 minute = 60000 milliseconds
+    this.wpmScore = (allLetters / 5)/timeInMinutes;
+        
+
   }
 
   resetGame(){
