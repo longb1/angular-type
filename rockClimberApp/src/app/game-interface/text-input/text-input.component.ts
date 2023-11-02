@@ -1,5 +1,4 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
-import { CompareService } from 'src/app/compare.service';
 import { IQuoteObject } from 'src/app/quote-object';
 @Component({
   selector: 'app-text-input',
@@ -15,10 +14,8 @@ import { IQuoteObject } from 'src/app/quote-object';
   styles: []
 })
 export class TextInputComponent{
-  constructor(private compareService: CompareService) { }
 
   public inputText!: string;
-  public done = false;
 
   @Input() quoteObject!:IQuoteObject;
   @Input() fieldDisabled!: boolean;
@@ -34,13 +31,25 @@ export class TextInputComponent{
     if (event.key === ' ') {
       event.preventDefault();
 
-      const isComplete = this.compareService.compare(this.quoteObject, this.inputText)
-      this.done = isComplete
-      this.inputText = '';
-      if(isComplete){
-        this.gameComplete.emit(true);
+      const usersWord = this.inputText
+      const wordArray = this.quoteObject.quote.split(' ')
+      const currentWord = wordArray[0]
+      const finalWord = wordArray[wordArray.length - 1];
+  
+      if(usersWord == currentWord){
+        this.quoteObject.completed+=usersWord+' '
+        wordArray.shift()
+        this.quoteObject.quote = wordArray.join(' ')
+  
+            
+        if (currentWord == finalWord){
+          this.gameComplete.emit(true);
+        }
+
+        this.inputText = '';
       }
-      console.log(this.done)
+  
+      
     }
   }
 
