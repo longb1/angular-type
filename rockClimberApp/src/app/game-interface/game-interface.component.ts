@@ -12,8 +12,8 @@ export class GameInterfaceComponent {
     public GameControllerService : GameControllerService,
     public StopwatchService : StopwatchService
     ) { }
-  timerValue = '0:00';
-  receivedInput: string[] = [];
+  public timerValue = '0:00';
+  public receivedInput: string[] = [];
   
   ngOnInit() {
     this.StopwatchService.getTimer().subscribe(time => {
