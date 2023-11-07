@@ -9,6 +9,7 @@ import { TextInputComponent } from './game-interface/text-input/text-input.compo
 import { GameInterfaceComponent } from './game-interface/game-interface.component';
 import { MainInterfaceComponent } from './main-interface/main-interface.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginInterfaceComponent } from './login-interface/login-interface.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     TextInputComponent,
     GameInterfaceComponent,
     MainInterfaceComponent,
+    LoginInterfaceComponent,
   ],
   imports: [
     BrowserModule,
