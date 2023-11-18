@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EndGameService } from './end-game.service';
+import { GenerateQuoteService } from './generate-quote.service';
 
-describe('EndGameService', () => {
-  let service: EndGameService;
+describe('QenerateQuoteService', () => {
+  let service: GenerateQuoteService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(EndGameService);
+    service = TestBed.inject(GenerateQuoteService);
   });
 
   it('should be created', () => {

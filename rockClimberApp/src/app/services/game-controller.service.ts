@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { GenerateQuoteService } from 'src/app/qenerate-quote.service';
-import { IQuoteObject } from './quote-object';
-import { StopwatchService } from 'src/app/stopwatch.service';
+import { GenerateQuoteService } from 'src/app/services/generate-quote.service';
+import { IQuoteObject } from '../models/quote-object';
+import { StopwatchService } from 'src/app/services/stopwatch.service';
 
 
 @Injectable({

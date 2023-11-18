@@ -3,13 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { TextScreenComponent } from './game-interface/text-screen/text-screen.component';
-import { TextInputComponent } from './game-interface/text-input/text-input.component';
-import { GameInterfaceComponent } from './game-interface/game-interface.component';
-import { MainInterfaceComponent } from './main-interface/main-interface.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { TextScreenComponent } from './components/game-interface/text-screen/text-screen.component';
+import { TextInputComponent } from './components/game-interface/text-input/text-input.component';
+import { GameInterfaceComponent } from './components/game-interface/game-interface.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginInterfaceComponent } from './login-interface/login-interface.component';
+import { SigninComponent } from './components/signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,7 @@ import { LoginInterfaceComponent } from './login-interface/login-interface.compo
     TextScreenComponent,
     TextInputComponent,
     GameInterfaceComponent,
-    MainInterfaceComponent,
-    LoginInterfaceComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,

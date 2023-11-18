@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { StopwatchService } from 'src/app/stopwatch.service';
+import { StopwatchService } from 'src/app/services/stopwatch.service';
 
-import { GameControllerService } from '../game-controller.service';
+import { GameControllerService } from '../../services/game-controller.service';
 @Component({
   selector: 'app-game-interface',
   templateUrl: './game-interface.component.html',

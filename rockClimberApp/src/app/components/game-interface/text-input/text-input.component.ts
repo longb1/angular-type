@@ -1,5 +1,5 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
-import { IQuoteObject } from 'src/app/quote-object';
+import { IQuoteObject } from 'src/app/models/quote-object';
 @Component({
   selector: 'app-text-input',
   template: `
