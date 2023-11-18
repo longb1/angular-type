@@ -1,0 +1,35 @@
+.outer{
+    height: 100vh;
+    background: rgb(168, 167, 117);
+}
+
+.panel-heading{
+    text-align: center;
+    margin-bottom:10px;
+}
+
+#forget{
+    min-width: 100px;
+    margin-left:auto;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+a:hover{
+    text-decoration:none;
+}
+
+.form-inline label{
+    padding-left:10px;
+    margin:0;
+    cursor:pointer;
+}
+
+.btn{
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.panel{
+    border: 2px dashed black;
+}
