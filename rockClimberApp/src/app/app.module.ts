@@ -8,7 +8,8 @@ import { TextScreenComponent } from './components/game-interface/text-screen/tex
 import { TextInputComponent } from './components/game-interface/text-input/text-input.component';
 import { GameInterfaceComponent } from './components/game-interface/game-interface.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { SigninComponent } from './components/signin/signin.component';
+import { SignupComponent } from './components/signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     TextScreenComponent,
     TextInputComponent,
     GameInterfaceComponent,
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
